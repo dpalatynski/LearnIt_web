@@ -1,0 +1,55 @@
+{% extends 'home.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="top_middle_box_app">
+	 {{ word }}
+</div>
+
+<div class="bottom_middle_box_app">
+	<br>
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="result_box_app">
+			<div class="left_result_box_app">
+				<div class="bad_left_result_box_app">
+					{% if check_answer_button and text == 'Bad' %}
+						<span>Bad</span>
+					{% else %}
+						Bad
+					{% endif %}
+				</div>
+				<div class="good_left_result_box_app"> <!-- Jeżeli tylko jedna literka jest błędna, do dodania -->
+					{% if check_answer_button and text == 'Good' %}
+						<span>Good</span>
+					{% else %}
+						Good
+					{% endif %}
+				</div>
+			</div>
+			<div class="right_result_box_app">
+				<div class="perfect_right_result_box_app">
+					{% if check_answer_button and text == 'Perfect' %}
+						<span>Perfect</span>
+					{% else %}
+						Perfect
+					{% endif %}
+				</div>
+				<div class="next_right_result_box_app">
+					        <button autofocus type="submit" class="btn btn-primary btn-block" >
+        {% if check_answer_button %}
+            Next
+        {% else %}
+            Check
+        {% endif %}
+        </button>
+				</div>
+			</div>
+		</div>
+        </form>
+</div>
+{% endblock %}
