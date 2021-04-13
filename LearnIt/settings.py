@@ -26,7 +26,7 @@ SECRET_KEY = 'b9-a36fybo(u43-0y5fl9ph&yx+_b7!j=8r!*p$)i^f1x1%3(a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dpflashcardapplication.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -127,3 +127,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
