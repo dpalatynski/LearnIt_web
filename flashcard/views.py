@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import FlashcardCheckAnswerModelForm
+from .utils import check_answer
 import random
 import pickle
 
@@ -31,10 +32,7 @@ def home(request):
         form = FlashcardCheckAnswerModelForm()
 
         if not word:
-            if answer == true_answer[0]:
-                text = 'Perfect'
-            else:
-                text = 'Bad'
+            text = check_answer(true_answer[0], answer)
 
             form.fields['answer'].widget.attrs['disabled'] = 'disabled'
             form.fields['answer'].initial = true_answer[0]
